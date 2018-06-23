@@ -3,7 +3,7 @@
 #####
 
 # set these variables
-checks = range(3, 500) # check all numbers in a given range (numbers are 2^n)
+startat = 2282 # 2^n is the number to start at
 showshort = True # show 2^x instead of entire number
 
 #####
@@ -30,29 +30,21 @@ def ch(n):
 
 
 
-pl = []
-
-for y in checks:
+good = True
+y = startat
+while good:
     if ch(y):
         if showshort:
-            nre = str(y)
+            nre = "2 ^ " + str(y) + " - 1"
         else:
             nre = str(2 ** y - 1)
-        print(nre+": prime")
-        pl.append(y)
+        print("\n\n\n\nPrime found -- "+nre)
+        good = False
     else:
         if showshort:
-            nre = str(y)
+            nre = "2 ^ " + str(y) + " - 1"
         else:
             nre = str(2 ** y - 1)
-        print(nre+": not prime")
+        print(nre+" checked, not prime")
 
-print("\n\n\n\nFound " + str(len(pl)) + " primes")
-if len(pl) > 0:
-    print("\nPrimes found:")
-    for i in pl:
-        if showshort:
-            print("--- 2 ^ " + str(i) + " - 1")
-        else:
-            nn = str(2 ** i - 1)
-            print("--- " + nn)
+    y += 1
